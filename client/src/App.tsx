@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { add, mult } from './components/functions.ts';
+import {add, mult, sub, div} from './components/functions.ts';
 import './App.css'
 
 function App() {
@@ -15,6 +15,10 @@ function App() {
       res = additionHandler();
     } else if (operand === '*') {
       res = multiplicationHandler();
+    } else if (operand === '-') {
+      res = subtractionHandler();
+    } else if (operand === '/') {
+      res = divideHandler();
     }
 
     updateResultant(res);
@@ -22,6 +26,8 @@ function App() {
 
   const additionHandler = () => add(input, input2);
   const multiplicationHandler = () => mult(input, input2);
+  const subtractionHandler = () => sub(input, input2)
+  const divideHandler = () => div(input, input2);
 
   const parseNumber = (input: any) => {
     return Number(input);
@@ -49,12 +55,24 @@ function App() {
         />
       </div>
 
+      <div>
+        <h3>{operand}</h3>
+      </div>
+
       <button type="button" onClick={() => changeOperand('+')}>
         <h2>+</h2>
       </button>
 
       <button type="button" onClick={() => changeOperand('*')}>
         <h2>*</h2>
+      </button>
+
+      <button type="button" onClick={() => changeOperand('-')}>
+        <h2>-</h2>
+      </button>
+
+      <button type="button" onClick={() => changeOperand('/')}>
+        <h2>/</h2>
       </button>
 
       <button type="button" onClick={equate}>
