@@ -57,6 +57,15 @@ const tokenize = (src: string[]) => {
 
     tokens.push({type: 'EOF'});
     return tokens;
+};
+
+// Takes unorganized token data and parses it into a function that can be evaluated. 
+const parse = (tokens) {
+    let pos = 0;
+
+    const peek = () => tokens[pos];
+
+
 }
 
 export default tokenize;
